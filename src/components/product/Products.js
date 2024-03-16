@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom"; 
 import { AppContext } from "../../context/appContext.js";
 import products from "./products.json"
 import "./Product.css"
@@ -15,7 +16,10 @@ export default function Products() {
       {products &&
         products.map((value) => (
           <div key={value.id} className="Product-items">
-            <div><img className="Product-img" src={`${PATH}${value.image}`} alt={value.name}/></div>
+            <div>{/* Use Link to navigate to product details page */}
+            <Link to={`/product/${value.id}`}>
+              <img className="Product-img" src={`${PATH}${value.image}`} alt={value.name} />
+            </Link></div>
             <h3>{value.name}</h3>
             <p style={{textAlign:"justify",padding:"10px"}}>{value.desc}</p>
             <div className="priceBtn">
