@@ -17,20 +17,20 @@ export default function Navbar() {
   };
   return (
     <div className="navbar">
-      <div className="title">Irish Cafe</div>
+      <div className="title">Beans Cafe</div>
       <div>
-        <h3>{user.name}</h3>
+        <h3>{flag > 1 && user.name}</h3>
       </div>
       <div className="links">
         <Link to={`${PATH}/`}> Products </Link>
-        {myOrders.length > 0 && (
+        {(myOrders.length > 0 && flag > 1) && (
           <Link to={`${PATH}/order`}> Orders({myOrders.length}) </Link>
         )}
-        {total > 0 && <Link to={`${PATH}/cart`}> Cart({total}) </Link>}
+        <Link to={`${PATH}/cart`}> Cart({total}) </Link>
         {flag < 2 ? (
           <Link to={`${PATH}/login`}>Login</Link>
         ) : (
-          <Link to={`${PATH}/`} onClick={handleLogout}>
+          <Link to={`${PATH}/login`} onClick={handleLogout}>
             Logout
           </Link>
         )}
